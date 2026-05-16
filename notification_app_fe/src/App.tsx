@@ -1,20 +1,28 @@
-import { useEffect } from "react";
-import Log from "./middleware/logger";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Navbar from "./components/Navbar";
+
+import AllNotifications from "./pages/AllNotifications";
+
+import PriorityNotifications from "./pages/PriorityNotifications";
 
 function App() {
-  useEffect(() => {
-    Log(
-      "frontend",
-      "info",
-      "component",
-      "App component loaded successfully"
-    );
-  }, []);
-
   return (
-    <div>
-      <h1>Logging Middleware Working ✅</h1>
-    </div>
+    <BrowserRouter>
+      <Navbar />
+
+      <Routes>
+        <Route
+          path="/"
+          element={<AllNotifications />}
+        />
+
+        <Route
+          path="/priority"
+          element={<PriorityNotifications />}
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
