@@ -1,30 +1,9 @@
 import axios from "axios";
 
-type StackType = "frontend" | "backend";
-
-type LevelType =
-  | "debug"
-  | "info"
-  | "warn"
-  | "error"
-  | "fatal";
-
-type FrontendPackageType =
-  | "api"
-  | "component"
-  | "hook"
-  | "page"
-  | "state"
-  | "style"
-  | "auth"
-  | "config"
-  | "middleware"
-  | "utils";
-
 const Log = async (
-  stack: StackType,
-  level: LevelType,
-  packageName: FrontendPackageType,
+  stack: string,
+  level: string,
+  packageName: string,
   message: string
 ) => {
   try {
@@ -44,9 +23,9 @@ const Log = async (
       }
     );
 
-    console.log("Log created:", response.data);
+    return response.data;
   } catch (error) {
-    console.error("Logging failed:", error);
+    throw error;
   }
 };
 
